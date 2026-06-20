@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timezone Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="content-max">
+            <header class="header">
+                <div class="logo">TZ Convert</div>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </header>
+
+            <main class="main-content">
+                <div class="converter-card">
+                    <div class="converter-grid">
+                        <div class="timezone-block">
+                            <label class="input-label">From</label>
+                            <select id="source-timezone" class="tz-select">
+                                <option value="Pacific/Honolulu">Hawaii (HST)</option>
+                                <option value="America/Anchorage">Alaska (AKST/AKDT)</option>
+                                <option value="America/Los_Angeles" selected>Pacific (PST/PDT)</option>
+                                <option value="America/Chicago">Central (CST/CDT)</option>
+                                <option value="America/New_York">Eastern (EST/EDT)</option>
+                            </select>
+                            <span class="tz-meta" id="source-abbr">PST</span>
+                            
+                            <div class="time-input-wrapper">
+                                <input type="datetime-local" id="datetime-input" class="time-input">
+                            </div>
+
+                            <div class="time-result">
+                                <div class="time-big" id="source-time">--:--</div>
+                                <div class="date-small" id="source-date">Select a date</div>
+                            </div>
+                        </div>
+
+                        <div class="swap-zone">
+                            <button id="swap-btn" class="swap-button" aria-label="Swap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="timezone-block target-block">
+                            <label class="input-label">To</label>
+                            <select id="target-timezone" class="tz-select">
+                                <option value="Pacific/Honolulu">Hawaii (HST)</option>
+                                <option value="America/Anchorage">Alaska (AKST/AKDT)</option>
+                                <option value="America/Los_Angeles">Pacific (PST/PDT)</option>
+                                <option value="America/Chicago">Central (CST/CDT)</option>
+                                <option value="America/New_York" selected>Eastern (EST/EDT)</option>
+                            </select>
+                            <span class="tz-meta" id="target-abbr">EST</span>
+
+                            <div class="time-result converted">
+                                <div class="time-big highlight" id="target-time">--:--</div>
+                                <div class="date-small" id="target-date">--</div>
+                                <div class="time-diff" id="time-diff"></div>
+                            </div>
+
+                            <button id="copy-btn" class="copy-button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="live-clocks">
+                    <div class="clock-item" data-timezone="Pacific/Honolulu">
+                        <div class="clock-label">Hawaii</div>
+                        <div class="clock-time" id="live-hawaii">--:--:--</div>
+                    </div>
+                    <div class="clock-item" data-timezone="America/Anchorage">
+                        <div class="clock-label">Alaska</div>
+                        <div class="clock-time" id="live-alaska">--:--:--</div>
+                    </div>
+                    <div class="clock-item" data-timezone="America/Los_Angeles">
+                        <div class="clock-label">Pacific</div>
+                        <div class="clock-time" id="live-pacific">--:--:--</div>
+                    </div>
+                    <div class="clock-item" data-timezone="America/Chicago">
+                        <div class="clock-label">Central</div>
+                        <div class="clock-time" id="live-central">--:--:--</div>
+                    </div>
+                    <div class="clock-item" data-timezone="America/New_York">
+                        <div class="clock-label">Eastern</div>
+                        <div class="clock-time" id="live-eastern">--:--:--</div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>

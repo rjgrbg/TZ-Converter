@@ -1,0 +1,65 @@
+╔════════════════════════════════════════════════════════╗
+║   TZ CONVERT - VERCEL DEPLOYMENT QUICK CHECKLIST      ║
+╚════════════════════════════════════════════════════════╝
+
+EASIEST METHOD - DEPLOY VIA VERCEL DASHBOARD:
+
+□ 1. CREATE GITHUB REPOSITORY
+     → Go to: https://github.com/new
+     → Name: timezone-converter
+     → Click "Create repository"
+
+□ 2. PUSH CODE TO GITHUB
+     Run in your terminal:
+     
+     git init
+     git add .
+     git commit -m "Initial commit"
+     git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+     git branch -M main
+     git push -u origin main
+
+□ 3. DEPLOY ON VERCEL
+     → Go to: https://vercel.com
+     → Sign up/Login with GitHub
+     → Click "Add New Project"
+     → Import your repository
+     → Click "Deploy"
+
+□ 4. DONE! 🎉
+     → Your site is live!
+     → URL: https://your-project.vercel.app
+
+═══════════════════════════════════════════════════════════
+
+ALTERNATIVE - DEPLOY VIA CLI:
+
+□ 1. Install Vercel CLI
+     npm install -g vercel
+
+□ 2. Login
+     vercel login
+
+□ 3. Deploy
+     vercel
+
+□ 4. Production Deploy
+     vercel --prod
+
+═══════════════════════════════════════════════════════════
+
+NEED HELP?
+→ Read DEPLOYMENT_GUIDE.md for detailed instructions
+→ Run deploy.bat for step-by-step help
+
+═══════════════════════════════════════════════════════════
+
+YOUR PROJECT FILES (All Present ✓):
+✓ index.html
+✓ styles.css  
+✓ script.js
+✓ vercel.json
+✓ package.json
+✓ README.md
+
+Ready to deploy!

@@ -1,0 +1,405 @@
+:root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --text: #0a0a0a;
+    --text-secondary: #525252;
+    --text-muted: #737373;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --border: #e5e5e5;
+    --border-focus: #d4d4d4;
+}
+
+[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --surface: #171717;
+    --text: #fafafa;
+    --text-secondary: #a3a3a3;
+    --text-muted: #737373;
+    --accent: #3b82f6;
+    --accent-hover: #60a5fa;
+    --border: #262626;
+    --border-focus: #404040;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    transition: background 0.2s, color 0.2s;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
+    filter: grayscale(100%) brightness(1.3);
+}
+
+[data-theme="dark"] body::before {
+    opacity: 0.12;
+    filter: grayscale(100%) brightness(0.4);
+}
+
+.app-wrapper {
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.content-max {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.logo {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+.theme-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+}
+
+.theme-btn:hover {
+    background: var(--surface);
+    border-color: var(--border-focus);
+}
+
+.theme-btn svg {
+    display: block;
+}
+
+[data-theme="light"] .moon-icon {
+    display: none;
+}
+
+[data-theme="dark"] .sun-icon {
+    display: none;
+}
+
+.converter-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.converter-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.timezone-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tz-select {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23737373' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    padding-right: 2.5rem;
+}
+
+.tz-select:hover {
+    border-color: var(--border-focus);
+}
+
+.tz-select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.tz-meta {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.time-input-wrapper {
+    margin-top: 0.5rem;
+}
+
+.time-input {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.9375rem;
+    transition: all 0.15s;
+}
+
+.time-input:hover {
+    border-color: var(--border-focus);
+}
+
+.time-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.time-result {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: var(--bg);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.target-block .time-result {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.04), rgba(59, 130, 246, 0.08));
+}
+
+.time-big {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+
+.time-big.highlight {
+    color: var(--accent);
+    font-size: 2.5rem;
+}
+
+.date-small {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.time-diff {
+    margin-top: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.swap-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3rem;
+}
+
+.swap-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.swap-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: rotate(180deg);
+}
+
+.copy-button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.625rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.15s;
+}
+
+.copy-button:hover {
+    background: var(--accent-hover);
+}
+
+
+
+.live-clocks {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.clock-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.15s;
+}
+
+.clock-item:hover {
+    border-color: var(--border-focus);
+}
+
+.clock-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.clock-time {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.875rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+    .app-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+
+    .converter-card {
+        padding: 1.5rem;
+    }
+
+    .converter-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .swap-zone {
+        padding-top: 0;
+    }
+
+    .swap-button {
+        transform: rotate(90deg);
+    }
+
+    .swap-button:hover {
+        transform: rotate(270deg);
+    }
+
+    .live-clocks {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .time-big {
+        font-size: 1.875rem;
+    }
+
+    .time-big.highlight {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .live-clocks {
+        grid-template-columns: 1fr;
+    }
+
+    .clock-time {
+        font-size: 0.9375rem;
+    }
+}

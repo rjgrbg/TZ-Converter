@@ -1,0 +1,18 @@
+{
+  "name": "us-timezone-comparator",
+  "version": "1.0.0",
+  "description": "Modern web application to compare time between US time zones",
+  "main": "index.html",
+  "scripts": {
+    "dev": "echo 'Open index.html in your browser'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "timezone",
+    "time-converter",
+    "us-timezones",
+    "time-comparison"
+  ],
+  "author": "",
+  "license": "MIT"
+}
