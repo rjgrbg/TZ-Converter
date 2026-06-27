@@ -3,6 +3,7 @@ const timeZones = {
     'Pacific/Honolulu': { name: 'Hawaii', shortName: 'HST' },
     'America/Anchorage': { name: 'Alaska', shortName: 'AKST/AKDT' },
     'America/Los_Angeles': { name: 'Pacific', shortName: 'PST/PDT' },
+    'America/Denver': { name: 'Mountain', shortName: 'MST/MDT' },
     'America/Chicago': { name: 'Central', shortName: 'CST/CDT' },
     'America/New_York': { name: 'Eastern', shortName: 'EST/EDT' }
 };

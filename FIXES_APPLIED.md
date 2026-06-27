@@ -46,6 +46,7 @@ Standard Time (Winter):
 - Hawaii (HST): UTC-10
 - Alaska (AKST): UTC-9  
 - Pacific (PST): UTC-8
+- Mountain (MST): UTC-7
 - Central (CST): UTC-6
 - Eastern (EST): UTC-5
 
@@ -53,16 +54,18 @@ Daylight Time (Summer):
 - Hawaii (HST): UTC-10 (no DST)
 - Alaska (AKDT): UTC-8
 - Pacific (PDT): UTC-7
+- Mountain (MDT): UTC-6
 - Central (CDT): UTC-5
 - Eastern (EDT): UTC-4
 
 ## Time Differences (Now Accurate)
 - Hawaii → Alaska: +1 hour
 - Alaska → Pacific: +1 hour
-- Pacific → Central: +2 hours
+- Pacific → Mountain: +1 hour
+- Mountain → Central: +1 hour
 - Central → Eastern: +1 hour ✅
 - Pacific → Eastern: +3 hours
-- Hawaii → Eastern: +5 hours
+- Hawaii → Eastern: +6 hours
 
 ## Testing Checklist
 ✅ Central to Eastern conversion = +1 hour
