@@ -292,10 +292,19 @@ function updateLiveTimes() {
             hour12: true
         }).format(now);
         
+        const dateStr = new Intl.DateTimeFormat('en-US', {
+            timeZone: tz,
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        }).format(now);
+        
         const zoneName = timeZones[tz].name.toLowerCase();
         const liveTimeEl = document.getElementById(`live-${zoneName}`);
+        const liveDateEl = document.getElementById(`date-${zoneName}`);
         
         if (liveTimeEl) liveTimeEl.textContent = timeStr;
+        if (liveDateEl) liveDateEl.textContent = dateStr;
     });
 }
 
